@@ -10,21 +10,21 @@
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
 $id=$_POST['id'];
-$items_name=$_POST['items_name'];
+$item_name=$_POST['item_name'];
 $price=$_POST['price'];
 $keyword=$_POST['keyword'];
 
-$sql="INSERT INTO my_items ($id,'$items_name',$price,'$keyword')";
+$sql="INSERT INTO my_items(id,item_name,price,keyword) VALUES($id,'$item_name',$price,'$keyword')";
 
 $done=pg_query($connect,$sql);
 
 if($done)
 {
-	print("データを挿入しました");
+	print("データを挿入しました。");
 }
 else
 {
-	print("データを挿入できませんでした");
+	print("データを挿入できませんでした。");
 }
 ?>
 
