@@ -38,7 +38,7 @@ foreach($arr as $rows){
 	}
 	print("</tr>");
 }
-				?>
+?>
 
 </table>
 </body>
