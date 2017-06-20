@@ -20,11 +20,11 @@ $done=pg_query($connect,$sql);
 
 if($done)
 {
-	print("データを挿入しました。");
+	print("データを挿入しました");
 }
 else
 {
-	print("データを挿入できませんでした。");
+	print("データを挿入できませんでした");
 }
 ?>
 
