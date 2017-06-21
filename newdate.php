@@ -27,6 +27,6 @@ else
 	print("データを挿入できませんでした。");
 }
 ?>
-
+<br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
 </body>
 </html>

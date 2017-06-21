@@ -28,6 +28,6 @@ else
 }
 
 ?>
-
+<br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
 </body>
 </html>
