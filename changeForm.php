@@ -6,7 +6,13 @@
 <title>変更画面</title>
 </head>
 <body>
-<form action="newdate.php"method="post">
+<?php
+$_REQUEST
+
+?>
+
+
+<form action="change.php"method="post">
 
 ID
 <br><input type="text"name="id"value=""/>
@@ -17,7 +23,7 @@ ID
 <br><br>キーワード
 <br><input type="text"name="keyword"value=""/>
 
-<br><br><input type="submit"value="送信する"/>
+<br><br><input type="submit"value="変更する"/>
 </form>
 </body>
 </html>

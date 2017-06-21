@@ -10,9 +10,20 @@
 <?php
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
-$sql="INSERT INTO my_items(id,item_name,price,keyword) VALUES($id,'$item_name',$price,'$keyword')";
+$id=$_POST['id'];
+$item_name=$_POST['item_name'];
+$price=$_POST['price'];
+$keyword=$_POST['keyword'];
 
-$done=pg_query($connect,$sql);
+$sql=("UPDATE my_items SET item_name = '%s' price=%d keyword='%s' WHERE id = %d");
+$sqll=sprintf($sql,pg_escape_string($item_name),$price,$keyword,$id);
+
+$done=pg_query($connect,$sqll);
+if($done)
+{
+	print("データを更新しました。");
+}
+
 ?>
 
 </body>
