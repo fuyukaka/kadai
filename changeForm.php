@@ -6,24 +6,37 @@
 <title>変更画面</title>
 </head>
 <body>
+<form action=""method="post">
+<input type="text"name="id"value="" />
+<input type="submit"value="検索"/>
 <?php
-$_REQUEST
+$connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
+
+
+$id=$_POST["id"];
+
+$sql=sprintf("SELECT * FROM my_items WHERE id = %d",$id);
+
+$result=pg_query($connect,$sql);
+$date=pg_fetch_assoc($result);
 
 ?>
+</form>
 
 
 <form action="change.php"method="post">
 
 ID
-<br><input type="text"name="id"value=""/>
+<br><input type="text" name="id"value="<?php print($date['id']);?>" />
 <br><br>商品名
-<br><input type="text"name="my_item"value=""/>
+<br><input type="text"name="item_name"value="<?php print($date['item_name']);?>"/>
 <br><br>価格
-<br><input type="text"name="price"value=""/>
+<br><input type="text"name="price"value="<?php print($date['price']);?>"/>
 <br><br>キーワード
-<br><input type="text"name="keyword"value=""/>
+<br><input type="text"name="keyword"value="<?php print($date['keyword']);?>"/>
 
 <br><br><input type="submit"value="変更する"/>
+<input type="hidden" name="id" value="<?php print($date['id']);?>"/>
 </form>
 </body>
 </html>
