@@ -11,7 +11,7 @@
 ID
 <br><input type="text"name="id"value=""/>
 <br><br>商品名
-<br><input type="text"name="my_item"value=""/>
+<br><input type="text"name="item_name"value=""/>
 <br><br>価格
 <br><input type="text"name="price"value=""/>
 <br><br>キーワード

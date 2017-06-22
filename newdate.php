@@ -16,16 +16,17 @@ $keyword=$_POST['keyword'];
 
 $sql="INSERT INTO my_items(id,item_name,price,keyword) VALUES($id,'$item_name',$price,'$keyword')";
 
-$done=pg_query($connect,$sql2);
-if(done)
+$result=pg_query($connect,$sql);
+
+if($result)
 {
-print("データを挿入しました。");
+	print("データを挿入しました。");
 }
 else
 {
-	print("挿入できなかった。");
+	print("データを挿入できませんでした。");
 }
 ?>
-<br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
+
 </body>
 </html>
