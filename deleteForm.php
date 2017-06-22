@@ -14,7 +14,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
 
-$id=$_POST["id"];
+$id=mb_convert_kana($_POST['id'],"a","UTF-8");
 
 $sql=sprintf("SELECT * FROM my_items WHERE id = %d",$id);
 
@@ -29,17 +29,18 @@ if($date==null)
 <input type="hidden" name="error" value="該当する商品は存在しません。"/>
 </form>
 
+
 <form action="delete.php"method="post">
 
 <br><br>商品名
 <br><?php print($date['item_name']);?>
 <br><br>価格
 <br><?php print($date['price']);?>
-<br><br>キーワード
+<br><br>備考
 <br><?php print($date['keyword']);?>
 
 <br><br><input type="submit"value="削除する"/>
-<input type="hidden" name="id" value="<?php print($date['id']);?>"/>
+<input type="hidden" name="id" value="<?php $id ?>"/>
 </form>
 
 <br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>

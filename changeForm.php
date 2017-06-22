@@ -15,7 +15,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
 
-$id=$_POST["id"];
+$id=mb_convert_kana($_POST['id'],"a","UTF-8");
 
 $sql=sprintf("SELECT * FROM my_items WHERE id = %d",$id);
 

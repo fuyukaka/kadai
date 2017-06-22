@@ -14,7 +14,7 @@ ID(入力しない場合は自動でIDが設定されます）
 <br><input type="text"name="item_name"value=""/>
 <br><br>価格
 <br><input type="text"name="price"value=""/>
-<br><br>キーワード
+<br><br>備考
 <br><input type="text"name="keyword"value=""/>
 
 <br><br><input type="submit"value="送信する"/>

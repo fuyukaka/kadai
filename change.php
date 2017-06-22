@@ -10,11 +10,19 @@
 <?php
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
-$id=$_POST['id'];
+$id=mb_convert_kana($_POST['id'],"a","UTF-8");
 $item_name=$_POST['item_name'];
-$price=$_POST['price'];
+$price=mb_convert_kana($_POST['price'],"a","UTF-8");
 $keyword=$_POST['keyword'];
 
+if($item_name=="" || $price=="" || $keyword=="")
+{
+	print("※空白の欄があります。");
+}
+else
+{
+	if(ctype_digit($price))
+	{
 $sql=sprintf("UPDATE my_items SET item_name='%s',price=%d,keyword='%s' WHERE id=%d",$item_name,$price,$keyword,$id);
 
 $done=pg_query($connect,$sql);
@@ -22,12 +30,16 @@ if($done)
 {
 	print("データを更新しました。");
 }
-else
-{
-	print("データを更新できませんでした。");
+	}
+	else
+	{
+		print("価格は数字で入力してください。");
+	}
 }
 
+
 ?>
+<br><form action="changeForm.php"><input type="submit" value="変更画面へ戻る"></form>
 <br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
 </body>
 </html>

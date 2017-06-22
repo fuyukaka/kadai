@@ -7,6 +7,7 @@
 </head>
 <body>
 <?php
+error_reporting(E_ALL ^ E_NOTICE);
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
 $id=mb_convert_kana($_POST['id'],"a","UTF-8");
@@ -21,10 +22,31 @@ if($item_name=="" || $price=="" || $keyword=="")
 
 else
 {
-$sql="INSERT INTO my_items(id,item_name,price,keyword) VALUES($id,'$item_name',$price,'$keyword')";
+	if($id=="")
+	{
+		if(ctype_digit($price))
+		{
+$sql="INSERT INTO my_items(item_name,price,keyword) VALUES('$item_name',$price,'$keyword')";
 
 $result=pg_query($connect,$sql);
+		}
+		else {
+			print("価格は数字で入力してください。");
+		}
+	}
+	else
+	{
+		if(ctype_digit($price) && ctype_digit($id))
+		{
+		$sql="INSERT INTO my_items(id,item_name,price,keyword) VALUES($id,'$item_name',$price,'$keyword')";
 
+		$result=pg_query($connect,$sql);
+		}
+		else
+		{
+			print("ID・価格は数字で入力してください。");
+		}
+	}
 if($result)
 {
 	print("データを挿入しました。");
@@ -32,6 +54,7 @@ if($result)
 }
 
 ?>
-<br><form action="newdateForm.php"><input type="submit" value="入力フォームへ戻る"></form>
+<br><form action="newdateForm.php"><input type="submit" value="登録画面へ戻る"></form>
+<br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
 </body>
 </html>

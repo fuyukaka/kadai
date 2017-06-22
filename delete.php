@@ -10,8 +10,14 @@
 <?php
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
-$id=$_POST['id'];
+$id=mb_convert_kana($_POST['id'],"a","UTF-8");
 
+if($id=="")
+{
+	print("検索を行ってください。");
+}
+else
+{
 $sql=sprintf("DELETE FROM my_items WHERE id = %s", $id);
 
 $done=pg_query($connect,$sql);
@@ -19,13 +25,10 @@ if($done)
 {
 	print("データを削除しました。");
 }
-else
-{
-	print("データを削除できませんでした。");
 }
-
 ?>
 </form>
+<br><form action="deleteForm.php"><input type="submit" value="削除画面へ戻る"></form>
 <br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
 </body>
 </html>

@@ -20,12 +20,12 @@ $arr = pg_fetch_all($result);
 <table border="1">
 <tr>
 <?php
-//テーブルヘッダとしてフィールド（カラム）名を出力
-$flds = pg_num_fields($result);
-for($i=0; $i<$flds; $i++){
-	$field = pg_field_name($result, $i);
-	print("<td>".$field."</td>");
-}
+
+	print("<td>ID</td>");
+	print("<td>商品名</td>");
+	print("<td>価格</td>");
+	print("<td>備考</td>");
+
 ?>
 </tr>
 
