@@ -21,10 +21,10 @@ $sql=sprintf("SELECT * FROM my_items WHERE id = %d",$id);
 $result=pg_query($connect,$sql);
 $date=pg_fetch_assoc($result);
 
-if($result==null)
-{
-	print($_POST["error"]);
-}
+if($date==null)
+ {
+ print('<br><font color="#ff0000">'.$_POST["error"].'</font>');
+ }
 ?>
 <input type="hidden" name="error" value="該当する商品は存在しません。"/>
 </form>
@@ -32,11 +32,11 @@ if($result==null)
 <form action="delete.php"method="post">
 
 <br><br>商品名
-<br><input type="text"name="item_name"value="<?php print($date['item_name']);?>"/>
+<br><?php print($date['item_name']);?>
 <br><br>価格
-<br><input type="text"name="price"value="<?php print($date['price']);?>"/>
+<br><?php print($date['price']);?>
 <br><br>キーワード
-<br><input type="text"name="keyword"value="<?php print($date['keyword']);?>"/>
+<br><?php print($date['keyword']);?>
 
 <br><br><input type="submit"value="削除する"/>
 <input type="hidden" name="id" value="<?php print($date['id']);?>"/>

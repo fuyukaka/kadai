@@ -11,9 +11,6 @@
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
 $id=$_POST['id'];
-$item_name=$_POST['item_name'];
-$price=$_POST['price'];
-$keyword=$_POST['keyword'];
 
 $sql=sprintf("DELETE FROM my_items WHERE id = %s", $id);
 

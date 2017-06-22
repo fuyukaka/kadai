@@ -10,6 +10,7 @@
 <input type="text"name="id"value="" />
 <input type="submit"value="検索"/>
 <?php
+
 error_reporting(E_ALL ^ E_NOTICE);
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
@@ -19,11 +20,14 @@ $id=$_POST["id"];
 $sql=sprintf("SELECT * FROM my_items WHERE id = %d",$id);
 
 $result=pg_query($connect,$sql);
+
 $date=pg_fetch_assoc($result);
-if($result==null)
-{
-	print('<br><font color="#ff0000">'.$_POST["error"].'</font>');
-}
+
+if($date==null)
+ {
+ print('<br><font color="#ff0000">'.$_POST["error"].'</font>');
+ }
+
 ?>
 <input type="hidden" name="error" value="該当する商品は存在しません。"/>
 </form>
