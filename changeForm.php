@@ -39,7 +39,7 @@ if($date==null)
 <br><input type="text"name="item_name"value="<?php print($date['item_name']);?>"/>
 <br><br>価格
 <br><input type="text"name="price"value="<?php print($date['price']);?>"/>
-<br><br>キーワード
+<br><br>備考
 <br><input type="text"name="keyword"value="<?php print($date['keyword']);?>"/>
 
 <br><br><input type="submit"value="変更する"/>
