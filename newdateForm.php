@@ -8,7 +8,7 @@
 <body>
 <form action="newdate.php"method="post">
 
-ID
+ID(入力しない場合は自動でIDが設定されます）
 <br><input type="text"name="id"value=""/>
 <br><br>商品名
 <br><input type="text"name="item_name"value=""/>
@@ -18,6 +18,7 @@ ID
 <br><input type="text"name="keyword"value=""/>
 
 <br><br><input type="submit"value="送信する"/>
+
 </form>
 <br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
 </body>

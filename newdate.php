@@ -9,10 +9,13 @@
 <?php
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
-$id=$_POST['id'];
+$id=mb_convert_kana($_POST['id'],"a","UTF-8");
 $item_name=$_POST['item_name'];
-$price=$_POST['price'];
+$price=mb_convert_kana($_POST['price'],"a","UTF-8");
 $keyword=$_POST['keyword'];
+
+if(isset($item_name))
+{
 
 $sql="INSERT INTO my_items(id,item_name,price,keyword) VALUES($id,'$item_name',$price,'$keyword')";
 
@@ -22,11 +25,13 @@ if($result)
 {
 	print("データを挿入しました。");
 }
+
+}
 else
 {
-	print("データを挿入できませんでした。");
+	print("※空白の欄があります。");
 }
 ?>
-
+<br><form action="newdateForm.php"><input type="submit" value="入力フォームへ戻る"></form>
 </body>
 </html>
