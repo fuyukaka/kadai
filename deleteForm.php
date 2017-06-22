@@ -40,7 +40,7 @@ if($date==null)
 <br><?php print($date['keyword']);?>
 
 <br><br><input type="submit"value="削除する"/>
-<input type="hidden" name="id" value="<?php $id ?>"/>
+<input type="hidden" name="id" value="<?php print($date['id']);?>"/>
 </form>
 
 <br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
