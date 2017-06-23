@@ -9,10 +9,10 @@
 <div align="center">
 <h1>メニュー画面</h1>
 
-<form action="list.php"><input type="submit" value="一覧"></form>
-<form action="newdateForm.php"><input type="submit" value="登録"></form>
-<form action="changeForm.php"><input type="submit" value="変更"></form>
-<form action="deleteForm.php"><input type="submit" value="削除"></form>
+<form action="list.php"><input type="submit" style="WIDTH: 100px" value="一覧"></form>
+<form action="newdateForm.php"><input type="submit" style="WIDTH: 100px" value="登録"></form>
+<form action="changeForm.php"><input type="submit" style="WIDTH: 100px" value="変更"></form>
+<form action="deleteForm.php"><input type="submit" style="WIDTH: 100px" value="削除"></form>
 </div>
 </body>
 </html>

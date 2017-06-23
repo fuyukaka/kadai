@@ -6,9 +6,10 @@
 <title>変更画面</title>
 </head>
 <body>
+<div align="center">
 <form action=""method="post">
-<input type="text"name="id"value="" />
-<input type="submit"value="検索"/>
+<input type="text"name="id"value="" size="8"/>
+<input type="submit"value="ID検索"/>
 <?php
 
 error_reporting(E_ALL ^ E_NOTICE);
@@ -34,17 +35,44 @@ if($date==null)
 
 
 <form action="change.php"method="post">
+<br><br>
+<table id="table2210" border="1">
+					<tr>
+						<td width="70">商品名</td>
+						<td width="185"><input type="text"name="item_name"value="<?php print($date['item_name']);?>"/></td>
+					</tr>
+					<tr>
+						<td>価格</td>
+						<td><input type="text"name="price"value="<?php print($date['price']);?>"/></td>
+					</tr>
+					<tr>
+						<td>備考</td>
+						<td><input type="text"name="keyword"value="<?php print($date['keyword']);?>"/></td>
+					</tr>
+				</table>
+				<style type="text/css">
+<!--
+#table2210 {
+	text-align: left;
+	border: solid 2px #808080;
+	border-collapse: collapse
+}
 
-<br><br>商品名
-<br><input type="text"name="item_name"value="<?php print($date['item_name']);?>"/>
-<br><br>価格
-<br><input type="text"name="price"value="<?php print($date['price']);?>"/>
-<br><br>備考
-<br><input type="text"name="keyword"value="<?php print($date['keyword']);?>"/>
+#table2210>tbody>tr>td {
+	border: 1px #808080;
+	border-style: solid dotted;
+	padding: 4px;
+	min-width: 60px
+}
+-->
+</style>
 
-<br><br><input type="submit"value="変更する"/>
+
+
+<br><br><input type="submit"style="WIDTH: 180px"value="変更する"/>
 <input type="hidden" name="id" value="<?php print($date['id']);?>"/>
 </form>
-<br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
+<br><form action="menu.php"><input type="submit" style="WIDTH: 180px" value="メニューへ戻る"></form>
+</div>
 </body>
 </html>

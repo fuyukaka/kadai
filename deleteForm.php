@@ -6,43 +6,72 @@
 <title>削除画面</title>
 </head>
 <body>
-<form action=""method="post">
-<input type="text"name="id"value="" />
-<input type="submit"value="検索"/>
+<div align="center">
+	<form action="" method="post">
+		<input type="text" name="id" value="" size="8" /> <input type="submit"
+			value="ID検索" />
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
-$connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
+error_reporting ( E_ALL ^ E_NOTICE );
+$connect = pg_connect ( "host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150" );
 
+$id = mb_convert_kana ( $_POST ['id'], "a", "UTF-8" );
 
-$id=mb_convert_kana($_POST['id'],"a","UTF-8");
+$sql = sprintf ( "SELECT * FROM my_items WHERE id = %d", $id );
 
-$sql=sprintf("SELECT * FROM my_items WHERE id = %d",$id);
+$result = pg_query ( $connect, $sql );
+$date = pg_fetch_assoc ( $result );
 
-$result=pg_query($connect,$sql);
-$date=pg_fetch_assoc($result);
-
-if($date==null)
- {
- print('<br><font color="#ff0000">'.$_POST["error"].'</font>');
- }
+if ($date == null) {
+	print ('<br><font color="#ff0000">' . $_POST ["error"] . '</font>') ;
+}
 ?>
-<input type="hidden" name="error" value="該当する商品は存在しません。"/>
-</form>
+<input type="hidden" name="error" value="該当する商品は存在しません。" />
+	</form>
 
 
-<form action="delete.php"method="post">
+	<form action="delete.php" method="post">
 
-<br><br>商品名
-<br><?php print($date['item_name']);?>
-<br><br>価格
-<br><?php print($date['price']);?>
-<br><br>備考
-<br><?php print($date['keyword']);?>
+		<br><br>
+				<table id="table2210" border="1">
+					<tr>
+						<td width="70">商品名</td>
+						<td width="185"><?php print($date['item_name']);?></td>
+					</tr>
+					<tr>
+						<td>価格</td>
+						<td><?php print($date['price']);?></td>
+					</tr>
+					<tr>
+						<td>備考</td>
+						<td><?php print($date['keyword']);?></td>
+					</tr>
+				</table>
+				<style type="text/css">
+<!--
+#table2210 {
+	text-align: left;
+	border: solid 2px #808080;
+	border-collapse: collapse
+}
 
-<br><br><input type="submit"value="削除する"/>
-<input type="hidden" name="id" value="<?php print($date['id']);?>"/>
-</form>
+#table2210>tbody>tr>td {
+	border: 1px #808080;
+	border-style: solid dotted;
+	padding: 4px;
+	min-width: 60px
+}
+-->
+</style>
 
-<br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
+		<br><br><input type="submit" style="WIDTH: 180px" value="削除する" /> <input
+				type="hidden" name="id" value="<?php print($date['id']);?>" />
+
+	</form>
+
+	<br><form action="menu.php">
+			<input type="submit" style="WIDTH: 180px" value="メニューへ戻る">
+
+		</form>
+</div>
 </body>
 </html>
