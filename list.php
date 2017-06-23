@@ -53,7 +53,7 @@ foreach ( $arr as $rows ) {
 -->
 </style>
 	<br><form action="menu.php">
-			<input type="submit" value="メニューへ戻る">
+			<input type="submit"style="WIDTH: 180px" value="メニューへ戻る">
 
 		</form>
 </div>

@@ -9,6 +9,7 @@
 <div align="center">
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
+ini_set('display_errors', 'Off');
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
 
 $id=mb_convert_kana($_POST['id'],"a","UTF-8");
@@ -16,9 +17,18 @@ $item_name=$_POST['item_name'];
 $price=mb_convert_kana($_POST['price'],"a","UTF-8");
 $keyword=$_POST['keyword'];
 
+$sql = sprintf ( "SELECT * FROM my_items WHERE id = %d", $id );
+
+$result = pg_query ( $connect, $sql );
+$date = pg_fetch_assoc ( $result );
+
+if (!($date == null)) {
+	$message='<font color="#ff0000">※既に存在するIDです（エラー）<font color="#ff0000">';
+}
+
 if($item_name=="" || $price=="" || $keyword=="")
 {
-	$message='<font color="#ff0000">※空白の欄があります（エラー）</font>';
+	$message='<font color="#ff0000">※空白の欄があります（エラー）<font color="#ff0000">';
 }
 
 else
