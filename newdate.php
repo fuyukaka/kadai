@@ -51,14 +51,14 @@ $result=pg_query($connect,$sql);
 		{
 		$sql="INSERT INTO my_items(id,item_name,price,keyword) VALUES($id,'$item_name',$price,'$keyword')";
 
-		$result=pg_query($connect,$sql);
+		$result2=pg_query($connect,$sql);
 		}
 		else
 		{
 			$message='<font color="#ff0000">※ID・価格は数字で入力してください（エラー）</font>';
 		}
 	}
-if($result)
+if($result2)
 {
 	$message="データを挿入しました";
 }
@@ -70,7 +70,7 @@ if($result)
 <table id="table6309" border="1">
 		<tr>
 			<td width="55" style="min-width: 55px">結果</td>
-			<td width="371"><?php print($message);?><br></td>
+			<td width="400"><?php print($message);?><br></td>
 		</tr>
 	</table>
 	<style type="text/css">

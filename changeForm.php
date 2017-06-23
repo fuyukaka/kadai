@@ -26,11 +26,11 @@ $date=pg_fetch_assoc($result);
 
 if($date==null)
  {
- print('<br><font color="#ff0000">'.$_POST["error"].'</font>');
+ print('<br><br><font color="#ff0000">'.$_POST["error"].'</font>');
  }
 
 ?>
-<input type="hidden" name="error" value="該当する商品は存在しません。"/>
+<input type="hidden" name="error" value="※該当する商品は存在しません（エラー）"/>
 </form>
 
 

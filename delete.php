@@ -32,7 +32,7 @@ if($done)
 <table id="table6309" border="1">
 		<tr>
 			<td width="55" style="min-width: 55px">結果</td>
-			<td width="371"><?php print($message);?><br></td>
+			<td width="400"><?php print($message);?><br></td>
 		</tr>
 	</table>
 	<style type="text/css">
