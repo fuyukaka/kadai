@@ -6,13 +6,29 @@
 <title>メニュー画面</title>
 </head>
 <body>
-<div align="center">
-<h1>メニュー画面</h1>
+	<div align="center">
+		<h1>
+			<font color="#000000">メ</font><font color="#262626">ニ</font><font
+				color="#4b4b4b">ュ</font><font color="#717171">ー</font><font
+				color="#969696">画</font><font color="#bcbcbc">面</font>
+		</h1>
 
-<form action="list.php"><input type="submit" style="WIDTH: 100px" value="一覧"></form>
-<form action="newdateForm.php"><input type="submit" style="WIDTH: 100px" value="登録"></form>
-<form action="changeForm.php"><input type="submit" style="WIDTH: 100px" value="変更"></form>
-<form action="deleteForm.php"><input type="submit" style="WIDTH: 100px" value="削除"></form>
-</div>
+		<form action="list.php">
+			<input type="submit" style="WIDTH: 100px" value="一覧">
+
+		</form>
+		<form action="newdateForm.php">
+			<input type="submit" style="WIDTH: 100px" value="登録">
+
+		</form>
+		<form action="changeForm.php">
+			<input type="submit" style="WIDTH: 100px" value="変更">
+
+		</form>
+		<form action="deleteForm.php">
+			<input type="submit" style="WIDTH: 100px" value="削除">
+
+		</form>
+	</div>
 </body>
 </html>

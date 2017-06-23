@@ -6,6 +6,7 @@
 <title>挿入結果画面</title>
 </head>
 <body>
+<div align="center">
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
 $connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
@@ -17,7 +18,7 @@ $keyword=$_POST['keyword'];
 
 if($item_name=="" || $price=="" || $keyword=="")
 {
-	print("※空白の欄があります。");
+	$message='<font color="#ff0000">※空白の欄があります（エラー）</font>';
 }
 
 else
@@ -31,7 +32,7 @@ $sql="INSERT INTO my_items(item_name,price,keyword) VALUES('$item_name',$price,'
 $result=pg_query($connect,$sql);
 		}
 		else {
-			print("価格は数字で入力してください。");
+			$message='<font color="#ff0000">※価格は数字で入力してください（エラー）</font>';
 		}
 	}
 	else
@@ -44,17 +45,44 @@ $result=pg_query($connect,$sql);
 		}
 		else
 		{
-			print("ID・価格は数字で入力してください。");
+			$message='<font color="#ff0000">※ID・価格は数字で入力してください（エラー）</font>';
 		}
 	}
 if($result)
 {
-	print("データを挿入しました。");
+	$message="データを挿入しました";
 }
 }
 
 ?>
-<br><form action="newdateForm.php"><input type="submit" value="登録画面へ戻る"></form>
-<br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
+
+<br><br>
+<table id="table6309" border="1">
+		<tr>
+			<td width="55" style="min-width: 55px">結果</td>
+			<td width="371"><?php print($message);?><br></td>
+		</tr>
+	</table>
+	<style type="text/css">
+<!--
+#table6309 {
+	text-align: left;
+	border: solid 2px #808080;
+	border-collapse: collapse
+}
+
+#table6309>tbody>tr>td {
+	border: 1px #808080;
+	border-style: solid dotted;
+	padding: 4px;
+	min-width: 60px
+}
+-->
+</style>
+
+
+<br><form action="newdateForm.php"><input type="submit" style="WIDTH: 180px" value="登録画面へ戻る"></form>
+<br><form action="menu.php"><input type="submit" style="WIDTH: 180px" value="メニューへ戻る"></form>
+</div>
 </body>
 </html>

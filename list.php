@@ -6,41 +6,56 @@
 <title>一覧画面</title>
 </head>
 <body>
-
+<div align="center">
 <?php
-$connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
+$connect = pg_connect ( "host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150" );
 
-//SQLの実行
-$result = pg_query($connect, "SELECT * FROM my_items ORDER BY id");
+// SQLの実行
+$result = pg_query ( $connect, "SELECT * FROM my_items ORDER BY id" );
 
-//データの取得
-$arr = pg_fetch_all($result);
+// データの取得
+$arr = pg_fetch_all ( $result );
 
 ?>
-<table border="1">
-<tr>
-<?php
-
-	print("<td>ID</td>");
-	print("<td>商品名</td>");
-	print("<td>価格</td>");
-	print("<td>備考</td>");
-
-?>
-</tr>
+<table id="table5594" border="1">
+		<tr align="center">
+			<td width="45">ID</td>
+			<td width="150">商品名</td>
+			<td width="49">価格</td>
+			<td width="200">備考</td>
+		</tr>
 
 <?php
-//データの出力
-foreach($arr as $rows){
-	print("<tr>");
-	foreach($rows as $value){
+// データの出力
+foreach ( $arr as $rows ) {
+	print ("<tr>") ;
+	foreach ( $rows as $value ) {
 		printf("<td>".$value."</td>");
 	}
 	print("</tr>");
 }
 ?>
 
-</table>
-<br><form action="menu.php"><input type="submit" value="メニューへ戻る"></form>
+	</table>
+	<style type="text/css">
+<!--
+#table5594 {
+	text-align: left;
+	border: double 3px #808080;
+	border-collapse: collapse
+}
+
+#table5594>tbody>tr>td {
+	border: 1px #808080;
+	border-style: solid dotted;
+	padding: 4px
+}
+-->
+</style>
+	<br><form action="menu.php">
+			<input type="submit" value="メニューへ戻る">
+
+		</form>
+</div>
 </body>
 </html>
