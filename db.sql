@@ -1,6 +1,3 @@
--- Table: my_items
-
--- DROP TABLE my_items;
 
 CREATE TABLE my_items
 (
