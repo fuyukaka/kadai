@@ -13,7 +13,7 @@ $connect = pg_connect ( "host=localhost dbname=postgres port=5433 user=postgres 
 // SQLの実行
 $result = pg_query ( $connect, "SELECT * FROM my_items ORDER BY id" );
 
-// データの取得
+//結果を連想配列に変換
 $arr = pg_fetch_all ( $result );
 
 ?>

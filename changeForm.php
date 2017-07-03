@@ -6,51 +6,60 @@
 <title>変更画面</title>
 </head>
 <body>
-<div align="center">
-<form action=""method="post">
-<input type="text"name="id"value="" size="8"/>
-<input type="submit"value="ID検索"/>
+	<div align="center">
+		<form action="" method="post">
+			<input type="text" name="id" value="" size="8" /> <input
+				type="submit" value="ID検索" />
 <?php
+// ID検索
 
-error_reporting(E_ALL ^ E_NOTICE);
-$connect=pg_connect("host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150");
+// 変数が空白であるエラーの非表示
+error_reporting ( E_ALL ^ E_NOTICE );
 
+// データベースへの接続
+$connect = pg_connect ( "host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150" );
 
-$id=mb_convert_kana($_POST['id'],"a","UTF-8");
+// データの受け取り
+$id = mb_convert_kana ( $_POST ['id'], "a", "UTF-8" );
 
-$sql=sprintf("SELECT * FROM my_items WHERE id = %d",$id);
+// SQLの実行
+$sql = sprintf ( "SELECT * FROM my_items WHERE id = %d", $id );
 
-$result=pg_query($connect,$sql);
+$result = pg_query ( $connect, $sql );
 
-$date=pg_fetch_assoc($result);
+// 結果を連想配列に変換
+$date = pg_fetch_assoc ( $result );
 
-if($date==null)
- {
- print('<br><br><font color="#ff0000">'.$_POST["error"].'</font>');
- }
+// DBに検索情報が存在しない場合のエラー表示
+if ($date == null) {
+	print ('<br><br><font color="#ff0000">' . $_POST ["error"] . '</font>') ;
+}
 
 ?>
-<input type="hidden" name="error" value="※該当する商品は存在しません（エラー）"/>
-</form>
+<input type="hidden" name="error" value="※該当する商品は存在しません（エラー）" />
+		</form>
 
 
-<form action="change.php"method="post">
-<br><br>
-<table id="table2210" border="1">
-					<tr>
-						<td width="70">商品名</td>
-						<td width="185"><input type="text"name="item_name"value="<?php print($date['item_name']);?>"/></td>
-					</tr>
-					<tr>
-						<td>価格</td>
-						<td><input type="text"name="price"value="<?php print($date['price']);?>"/></td>
-					</tr>
-					<tr>
-						<td>備考</td>
-						<td><input type="text"name="keyword"value="<?php print($date['keyword']);?>"/></td>
-					</tr>
-				</table>
-				<style type="text/css">
+		<form action="change.php" method="post">
+			<br><br>
+					<table id="table2210" border="1">
+						<tr>
+							<td width="70">商品名</td>
+							<td width="185"><input type="text" name="item_name"
+								value="<?php print($date['item_name']);?>" /></td>
+						</tr>
+						<tr>
+							<td>価格</td>
+							<td><input type="text" name="price"
+								value="<?php print($date['price']);?>" /></td>
+						</tr>
+						<tr>
+							<td>備考</td>
+							<td><input type="text" name="keyword"
+								value="<?php print($date['keyword']);?>" /></td>
+						</tr>
+					</table>
+					<style type="text/css">
 <!--
 #table2210 {
 	text-align: left;
@@ -65,14 +74,16 @@ if($date==null)
 	min-width: 60px
 }
 -->
-</style>
+</style> <br><br><input type="submit" style="WIDTH: 180px" value="変更する" />
+							<input type="hidden" name="id"
+							value="<?php print($date['id']);?>" />
 
+		</form>
+		<br><form action="menu.php">
+				<input type="submit" style="WIDTH: 180px" value="メニューへ戻る">
 
+			</form>
 
-<br><br><input type="submit"style="WIDTH: 180px"value="変更する"/>
-<input type="hidden" name="id" value="<?php print($date['id']);?>"/>
-</form>
-<br><form action="menu.php"><input type="submit" style="WIDTH: 180px" value="メニューへ戻る"></form>
-</div>
+	</div>
 </body>
 </html>

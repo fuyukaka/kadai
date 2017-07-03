@@ -6,19 +6,27 @@
 <title>変更結果画面</title>
 </head>
 <body>
-<div align="center">
+	<div align="center">
 <?php
+
+//データベース接続
 $connect = pg_connect ( "host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150" );
 
+//入力画面からのデータの受け取り
 $id = mb_convert_kana ( $_POST ['id'], "a", "UTF-8" );
 $item_name = $_POST ['item_name'];
 $price = mb_convert_kana ( $_POST ['price'], "a", "UTF-8" );
 $keyword = $_POST ['keyword'];
 
+//空白値チェック
 if ($item_name == "" || $price == "" || $keyword == "") {
 	$message = '<font color="#ff0000">※空白の欄があります（エラー）</font>';
 } else {
+
+//価格が数字であるかどうかのチェック
 	if (ctype_digit ( $price )) {
+
+		//SQLの実行
 		$sql = sprintf ( "UPDATE my_items SET item_name='%s',price=%d,keyword='%s' WHERE id=%d", $item_name, $price, $keyword, $id );
 
 		$done = pg_query ( $connect, $sql );
@@ -32,13 +40,13 @@ if ($item_name == "" || $price == "" || $keyword == "") {
 
 ?>
 <br><br>
-<table id="table6309" border="1">
-		<tr>
-			<td width="55" style="min-width: 55px">結果</td>
-			<td width="400"><?php print($message);?><br></td>
-		</tr>
-	</table>
-	<style type="text/css">
+				<table id="table6309" border="1">
+					<tr>
+						<td width="55" style="min-width: 55px">結果</td>
+						<td width="400"><?php print($message);?><br></td>
+					</tr>
+				</table>
+				<style type="text/css">
 <!--
 #table6309 {
 	text-align: left;
@@ -53,15 +61,14 @@ if ($item_name == "" || $price == "" || $keyword == "") {
 	min-width: 60px
 }
 -->
-</style>
+</style> <br><form action="changeForm.php">
+						<input type="submit" style="WIDTH: 180px" value="変更画面へ戻る">
 
-	<br><form action="changeForm.php">
-			<input type="submit" style="WIDTH: 180px" value="変更画面へ戻る">
+					</form> <br><form action="menu.php">
+							<input type="submit" style="WIDTH: 180px" value="メニューへ戻る">
 
-		</form> <br><form action="menu.php">
-				<input type="submit" style="WIDTH: 180px" value="メニューへ戻る">
+						</form>
 
-			</form>
-</div>
+	</div>
 </body>
 </html>

@@ -6,10 +6,10 @@
 <title>削除画面</title>
 </head>
 <body>
-<div align="center">
-	<form action="" method="post">
-		<input type="text" name="id" value="" size="8" /> <input type="submit"
-			value="ID検索" />
+	<div align="center">
+		<form action="" method="post">
+			<input type="text" name="id" value="" size="8" /> <input
+				type="submit" value="ID検索" />
 <?php
 error_reporting ( E_ALL ^ E_NOTICE );
 $connect = pg_connect ( "host=localhost dbname=postgres port=5433 user=postgres password=fsiabc3150" );
@@ -26,27 +26,27 @@ if ($date == null) {
 }
 ?>
 <input type="hidden" name="error" value="※該当する商品は存在しません（エラー）" />
-	</form>
+		</form>
 
 
-	<form action="delete.php" method="post">
+		<form action="delete.php" method="post">
 
-		<br><br>
-				<table id="table2210" border="1">
-					<tr>
-						<td width="70">商品名</td>
-						<td width="185"><?php print($date['item_name']);?></td>
-					</tr>
-					<tr>
-						<td>価格</td>
-						<td><?php print($date['price']);?></td>
-					</tr>
-					<tr>
-						<td>備考</td>
-						<td><?php print($date['keyword']);?></td>
-					</tr>
-				</table>
-				<style type="text/css">
+			<br><br>
+					<table id="table2210" border="1">
+						<tr>
+							<td width="70">商品名</td>
+							<td width="185"><?php print($date['item_name']);?></td>
+						</tr>
+						<tr>
+							<td>価格</td>
+							<td><?php print($date['price']);?></td>
+						</tr>
+						<tr>
+							<td>備考</td>
+							<td><?php print($date['keyword']);?></td>
+						</tr>
+					</table>
+					<style type="text/css">
 <!--
 #table2210 {
 	text-align: left;
@@ -61,17 +61,17 @@ if ($date == null) {
 	min-width: 60px
 }
 -->
-</style>
-
-		<br><br><input type="submit" style="WIDTH: 180px" value="削除する" /> <input
-				type="hidden" name="id" value="<?php print($date['id']);?>" />
-
-	</form>
-
-	<br><form action="menu.php">
-			<input type="submit" style="WIDTH: 180px" value="メニューへ戻る">
+</style> <br><br><input type="submit" style="WIDTH: 180px" value="削除する" />
+							<input type="hidden" name="id"
+							value="<?php print($date['id']);?>" />
 
 		</form>
-</div>
+
+		<br><form action="menu.php">
+				<input type="submit" style="WIDTH: 180px" value="メニューへ戻る">
+
+			</form>
+
+	</div>
 </body>
 </html>
